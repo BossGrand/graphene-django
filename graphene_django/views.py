@@ -182,6 +182,10 @@ class GraphQLView(View):
                 response["id"] = id
                 response["status"] = status_code
 
+
+            if execution_result.extensions:
+                response['extensions'] = execution_result.extensions
+
             result = self.json_encode(request, response, pretty=show_graphiql)
         else:
             result = None
